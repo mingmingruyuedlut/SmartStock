@@ -1,0 +1,53 @@
+﻿
+@using SmartStock.Core.Models
+@model TransferOrderSummary
+
+@if (Model.TransferOrders != null && Model.TransferOrders.Count > 0)
+{
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <i class="fa fa-list"></i><h3 class="box-title">转账明细</h3>
+            </div>
+            <div class="box-body admin-content">
+                <table id="DashboardDataTbl" class="table table-bordered table-striped dashboard-data">
+                    <thead>
+                        <tr>
+                            <th>转账时间</th>
+                            <th>客户名称</th>
+                            <th>转账金额</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model.TransferOrders)
+                        {
+                            <tr>
+                                <td>@order.TrasferDate</td>
+                                <td>@order.UserName</td>
+                                <td>@order.Amount</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-md-12">
+        <!-- DONUT CHART -->
+        <div class="box">
+            <div class="box-header with-border">
+                <i class="fa fa-users"></i> <h3 class="box-title">没有相关数据</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                暂时还没有转账记录
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+}
+

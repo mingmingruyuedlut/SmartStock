@@ -1,0 +1,10 @@
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.JobManager\bin\Debug\SmartStock.JobManager.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.JobManager\bin\Debug\SmartStock.JobManager.pdb
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.JobManager\obj\Debug\SmartStock.JobManager.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.JobManager\obj\Debug\SmartStock.JobManager.pdb
+C:\Users\eric.sun.FABRICHQ\documents\visual studio 2015\Projects\SmartStock\SmartStock.JobManager\obj\Debug\SmartStock.JobManager.csprojResolveAssemblyReference.cache
+E:\Project\SmartStock\SmartStock.JobManager\bin\Debug\SmartStock.JobManager.dll
+E:\Project\SmartStock\SmartStock.JobManager\bin\Debug\SmartStock.JobManager.pdb
+E:\Project\SmartStock\SmartStock.JobManager\obj\Debug\SmartStock.JobManager.dll
+E:\Project\SmartStock\SmartStock.JobManager\obj\Debug\SmartStock.JobManager.pdb
+E:\Project\SmartStock\SmartStock.JobManager\obj\Debug\SmartStock.JobManager.csprojResolveAssemblyReference.cache

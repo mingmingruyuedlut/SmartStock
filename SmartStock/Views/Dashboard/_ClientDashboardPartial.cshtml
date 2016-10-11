@@ -1,0 +1,56 @@
+﻿
+@using SmartStock.Core.Models
+@model ClientViewerSummary
+
+@if (Model.ClientViewTableSummary != null && Model.ClientViewTableSummary.Count > 0)
+{
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <i class="fa fa-list"></i><h3 class="box-title">盈利明细</h3>
+            </div>
+            <div class="box-body admin-content">
+                <table id="DashboardDataTbl" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>证券代码</th>
+                            <th>证券名称</th>
+                            <th>交易时间</th>
+                            <th>收益</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var stock in Model.ClientViewTableSummary)
+                        {
+                            <tr>
+                                <td>@stock.StockCode</td>
+                                <td>@stock.StockName</td>
+                                <td>@stock.TradingDate</td>
+                                <td>@stock.ProfitPerStock</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+}
+else
+{
+    <div class="col-md-12">
+        <!-- DONUT CHART -->
+        <div class="box">
+            <div class="box-header with-border">
+                <i class="fa fa-users"></i> <h3 class="box-title">没有相关数据</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                请重新选择筛选时间
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+}
+

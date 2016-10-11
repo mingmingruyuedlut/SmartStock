@@ -1,0 +1,77 @@
+﻿
+@using SmartStock.Core.Models
+@model TradingOrderSummary
+
+@if (Model.TradingOrders != null && Model.TradingOrders.Count > 0)
+{
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <i class="fa fa-list"></i><h3 class="box-title">交易记录</h3>
+            </div>
+            <div class="box-body admin-content">
+                <table id="DashboardDataTbl" class="table table-bordered table-striped dashboard-data">
+                    <thead>
+                        <tr>
+                            <th>证券代码</th>
+                            <th>证券名称</th>
+                            <th>交易时间</th>
+                            <th>买卖类型</th>
+                            <th>交易代码</th>
+                            <th>交易价格</th>
+                            <th>交易数量</th>
+                            <th>交易金额</th>
+                            <th>结算金额</th>
+                            <th>股东代码</th>
+                            <th>操作人员</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model.TradingOrders)
+                        {
+                            <tr data-tradingorderid="@order.ID" data-parentid="@order.ParentID" data-tradingnumber="@order.TradingNumber" data-stockname="@order.StockName" data-tradingdate="@order.TradingDate" data-tradingprice="@order.TradingPrice">
+                                <td>@order.StockCode</td>
+                                <td>@order.StockName</td>
+                                <td>@order.TradingDate</td>
+                                <td>@order.BuySellType</td>
+                                <td>@order.TradingCode</td>
+                                <td>@order.TradingPrice</td>
+                                <td>@order.TradingNumber</td>
+                                <td>@order.TradingAmount</td>
+                                <td>@order.SettleAmount</td>
+                                <td>@order.StockHolderCode</td>
+                                <td>@order.StockOperator</td>
+                                <td>
+                                    @if (order.ParentID == 0)
+                                    {
+                                        <a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="拆分" class="btn btn-xs btn-default splitAction"><i class="fa fa-edit"></i> </a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-md-12">
+        <!-- DONUT CHART -->
+        <div class="box">
+            <div class="box-header with-border">
+                <i class="fa fa-users"></i> <h3 class="box-title">没有相关数据</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                暂时还没有转账记录
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+}
+
+

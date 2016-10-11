@@ -1,0 +1,96 @@
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\roslyn\csc.exe
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\roslyn\System.Collections.Immutable.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\roslyn\vbc.exe
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\roslyn\VBCSCompiler.exe
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\roslyn\VBCSCompiler.exe.config
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\SmartStock.dll.config
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\SmartStock.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\SmartStock.pdb
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\Antlr3.Runtime.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\EntityFramework.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\EntityFramework.SqlServer.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\Microsoft.Web.Infrastructure.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\Newtonsoft.Json.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\SmartStock.Core.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Helpers.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Mvc.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Optimization.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Razor.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Webpages.Deployment.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Webpages.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Webpages.Razor.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\WebGrease.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\SmartStock.Common.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\SmartStock.Core.pdb
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\Antlr3.Runtime.pdb
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\EntityFramework.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\EntityFramework.SqlServer.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\Newtonsoft.Json.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Optimization.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Razor.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Webpages.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Webpages.Deployment.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Webpages.Razor.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Helpers.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\System.Web.Mvc.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\bin\SmartStock.Common.pdb
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\obj\Release\SmartStock.csprojResolveAssemblyReference.cache
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\obj\Release\SmartStock.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock\obj\Release\SmartStock.pdb
+E:\Project\SmartStock\SmartStock\bin\roslyn\csc.exe
+E:\Project\SmartStock\SmartStock\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Project\SmartStock\SmartStock\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Project\SmartStock\SmartStock\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Project\SmartStock\SmartStock\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Project\SmartStock\SmartStock\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Project\SmartStock\SmartStock\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Project\SmartStock\SmartStock\bin\roslyn\System.Collections.Immutable.dll
+E:\Project\SmartStock\SmartStock\bin\roslyn\System.Reflection.Metadata.dll
+E:\Project\SmartStock\SmartStock\bin\roslyn\vbc.exe
+E:\Project\SmartStock\SmartStock\bin\roslyn\VBCSCompiler.exe
+E:\Project\SmartStock\SmartStock\bin\roslyn\VBCSCompiler.exe.config
+E:\Project\SmartStock\SmartStock\bin\SmartStock.dll.config
+E:\Project\SmartStock\SmartStock\bin\SmartStock.dll
+E:\Project\SmartStock\SmartStock\bin\SmartStock.pdb
+E:\Project\SmartStock\SmartStock\bin\Antlr3.Runtime.dll
+E:\Project\SmartStock\SmartStock\bin\EntityFramework.dll
+E:\Project\SmartStock\SmartStock\bin\EntityFramework.SqlServer.dll
+E:\Project\SmartStock\SmartStock\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Project\SmartStock\SmartStock\bin\Microsoft.Web.Infrastructure.dll
+E:\Project\SmartStock\SmartStock\bin\Newtonsoft.Json.dll
+E:\Project\SmartStock\SmartStock\bin\SmartStock.Core.dll
+E:\Project\SmartStock\SmartStock\bin\System.Web.Helpers.dll
+E:\Project\SmartStock\SmartStock\bin\System.Web.Mvc.dll
+E:\Project\SmartStock\SmartStock\bin\System.Web.Optimization.dll
+E:\Project\SmartStock\SmartStock\bin\System.Web.Razor.dll
+E:\Project\SmartStock\SmartStock\bin\System.Web.Webpages.Deployment.dll
+E:\Project\SmartStock\SmartStock\bin\System.Web.Webpages.dll
+E:\Project\SmartStock\SmartStock\bin\System.Web.Webpages.Razor.dll
+E:\Project\SmartStock\SmartStock\bin\WebGrease.dll
+E:\Project\SmartStock\SmartStock\bin\SmartStock.Common.dll
+E:\Project\SmartStock\SmartStock\bin\SmartStock.Core.pdb
+E:\Project\SmartStock\SmartStock\bin\Antlr3.Runtime.pdb
+E:\Project\SmartStock\SmartStock\bin\EntityFramework.xml
+E:\Project\SmartStock\SmartStock\bin\EntityFramework.SqlServer.xml
+E:\Project\SmartStock\SmartStock\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Project\SmartStock\SmartStock\bin\Newtonsoft.Json.xml
+E:\Project\SmartStock\SmartStock\bin\System.Web.Optimization.xml
+E:\Project\SmartStock\SmartStock\bin\System.Web.Razor.xml
+E:\Project\SmartStock\SmartStock\bin\System.Web.Webpages.xml
+E:\Project\SmartStock\SmartStock\bin\System.Web.Webpages.Deployment.xml
+E:\Project\SmartStock\SmartStock\bin\System.Web.Webpages.Razor.xml
+E:\Project\SmartStock\SmartStock\bin\System.Web.Helpers.xml
+E:\Project\SmartStock\SmartStock\bin\System.Web.Mvc.xml
+E:\Project\SmartStock\SmartStock\bin\SmartStock.Common.pdb
+E:\Project\SmartStock\SmartStock\obj\Release\SmartStock.csprojResolveAssemblyReference.cache
+E:\Project\SmartStock\SmartStock\obj\Release\SmartStock.dll
+E:\Project\SmartStock\SmartStock\obj\Release\SmartStock.pdb

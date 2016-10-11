@@ -1,0 +1,10 @@
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Common\bin\Debug\SmartStock.Common.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Common\bin\Debug\SmartStock.Common.pdb
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Common\obj\Debug\SmartStock.Common.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Common\obj\Debug\SmartStock.Common.pdb
+C:\Users\eric.sun.FABRICHQ\documents\visual studio 2015\Projects\SmartStock\SmartStock.Common\obj\Debug\SmartStock.Common.csprojResolveAssemblyReference.cache
+E:\Project\SmartStock\SmartStock.Common\bin\Debug\SmartStock.Common.dll
+E:\Project\SmartStock\SmartStock.Common\bin\Debug\SmartStock.Common.pdb
+E:\Project\SmartStock\SmartStock.Common\obj\Debug\SmartStock.Common.dll
+E:\Project\SmartStock\SmartStock.Common\obj\Debug\SmartStock.Common.pdb
+E:\Project\SmartStock\SmartStock.Common\obj\Debug\SmartStock.Common.csprojResolveAssemblyReference.cache

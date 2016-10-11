@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "StockManager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using SmartStock.Core.Models
+@using SmartStock.Core.Enums
+@model TradingStockSummary
+
+@{
+    LoginUser loginUser = (LoginUser)Session["CurrentLoginUser"];
+}
+<section class="content-header">
+    <h1>
+        委托股票
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-gear"></i>委托</a></li>
+        <li class="active">委托股票</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-list"></i><h3 class="box-title">委托股票</h3>
+                </div>
+                <div class="box-body admin-content">
+                    @Html.Partial("_TradingStockPartial", Model.TradingStocks)
+                </div>
+                @if (loginUser.RoleType == RoleType.Manager)
+                {
+                    <div class="box-footer">
+                        <a href="javascript:void(0)" class="btn btn-primary pull-right stock-add-btn"><i class="fa fa-plus"></i> 添加</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row addStockDiv">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">添加股票</h3>
+                </div>
+                <div class="box-body">
+                    <label class="col-sm-1 control-label redAsteriskBefore">用户名称</label>
+                    @Html.DropDownList("LoginUserId", Model.Users as List<SelectListItem>, "--请选择--", new { @class = "col-sm-11 form-control" })
+                </div>
+                <div class="box-body">
+                    <label class="col-sm-1 redAsteriskBefore">股票代码</label>
+                    <input type="text" class="col-sm-11 stock-code" />
+                </div>
+                <div class="box-body">
+                    <label class="col-sm-1 redAsteriskBefore">股票名称</label>
+                    <input type="text" class="col-sm-11 stock-name" />
+                </div>
+                <div class="box-body">
+                    <label class="col-sm-1 redAsteriskBefore">股票数量</label>
+                    <input type="text" class="col-sm-11 original-number" />
+                </div>
+                <div class="box-body">
+                    <label class="col-sm-1 redAsteriskBefore">收盘价格</label>
+                    <input type="text" class="col-sm-11 closing-price" />
+                </div>
+                <div class="box-body">
+                    <label class="col-sm-1 redAsteriskBefore">股东代码</label>
+                    <input type="text" class="col-sm-11 stock-holder-code" />
+                </div>
+                <div class="box-body">
+                    <label class="col-sm-1 redAsteriskBefore">资金账号</label>
+                    <input type="text" class="col-sm-11 cash-account-no" />
+                </div>
+                <div class="box-footer">
+                    <button type="button" class="btn btn-primary pull-right template-btn stock-btn stock-save-btn"> 保存</button>
+                    <button type="button" class="btn btn-primary pull-right template-btn stock-btn stock-cancel-btn"> 撤销</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Scripts/stock/stockmanager.js"></script>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            initCommonDataTable('#StockDataTbl');
+            bindStockManagerEvent();
+        });
+
+    </script>
+}

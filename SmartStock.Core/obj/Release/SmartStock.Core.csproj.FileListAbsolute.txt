@@ -1,0 +1,41 @@
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\bin\Release\SmartStock.Core.dll.config
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\bin\Release\SmartStock.Core.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\bin\Release\SmartStock.Core.pdb
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\bin\Release\EntityFramework.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\bin\Release\EntityFramework.SqlServer.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\bin\Release\Newtonsoft.Json.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\bin\Release\SmartStock.Common.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\bin\Release\SmartStock.Common.pdb
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\bin\Release\EntityFramework.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\bin\Release\EntityFramework.SqlServer.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\bin\Release\Newtonsoft.Json.xml
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\obj\Release\SmartStock.Core.csprojResolveAssemblyReference.cache
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\obj\Release\SmartStock.Core.dll
+c:\users\eric.sun.fabrichq\documents\visual studio 2015\Projects\SmartStock\SmartStock.Core\obj\Release\SmartStock.Core.pdb
+E:\Project\SmartStock\SmartStock.Core\bin\Release\SmartStock.Core.dll.config
+E:\Project\SmartStock\SmartStock.Core\bin\Release\SmartStock.Core.dll
+E:\Project\SmartStock\SmartStock.Core\bin\Release\SmartStock.Core.pdb
+E:\Project\SmartStock\SmartStock.Core\bin\Release\EntityFramework.dll
+E:\Project\SmartStock\SmartStock.Core\bin\Release\EntityFramework.SqlServer.dll
+E:\Project\SmartStock\SmartStock.Core\bin\Release\Newtonsoft.Json.dll
+E:\Project\SmartStock\SmartStock.Core\bin\Release\SmartStock.Common.dll
+E:\Project\SmartStock\SmartStock.Core\bin\Release\SmartStock.Common.pdb
+E:\Project\SmartStock\SmartStock.Core\bin\Release\EntityFramework.xml
+E:\Project\SmartStock\SmartStock.Core\bin\Release\EntityFramework.SqlServer.xml
+E:\Project\SmartStock\SmartStock.Core\bin\Release\Newtonsoft.Json.xml
+E:\Project\SmartStock\SmartStock.Core\obj\Release\SmartStock.Core.csprojResolveAssemblyReference.cache
+E:\Project\SmartStock\SmartStock.Core\obj\Release\SmartStock.Core.dll
+E:\Project\SmartStock\SmartStock.Core\obj\Release\SmartStock.Core.pdb
+E:\Project\SmartStock\SmartStock.Core\bin\Release\Microsoft.Web.Infrastructure.dll
+E:\Project\SmartStock\SmartStock.Core\bin\Release\System.Web.Helpers.dll
+E:\Project\SmartStock\SmartStock.Core\bin\Release\System.Web.Mvc.dll
+E:\Project\SmartStock\SmartStock.Core\bin\Release\System.Web.Razor.dll
+E:\Project\SmartStock\SmartStock.Core\bin\Release\System.Web.WebPages.Deployment.dll
+E:\Project\SmartStock\SmartStock.Core\bin\Release\System.Web.WebPages.dll
+E:\Project\SmartStock\SmartStock.Core\bin\Release\System.Web.WebPages.Razor.dll
+E:\Project\SmartStock\SmartStock.Core\bin\Release\System.Web.Helpers.xml
+E:\Project\SmartStock\SmartStock.Core\bin\Release\System.Web.Mvc.xml
+E:\Project\SmartStock\SmartStock.Core\bin\Release\System.Web.Razor.xml
+E:\Project\SmartStock\SmartStock.Core\bin\Release\System.Web.WebPages.xml
+E:\Project\SmartStock\SmartStock.Core\bin\Release\System.Web.WebPages.Deployment.xml
+E:\Project\SmartStock\SmartStock.Core\bin\Release\System.Web.WebPages.Razor.xml

@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "ManagerViewer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using SmartStock.Core.Models
+@model ManagerViewerSummary
+
+<section class="content-header">
+    <h1>
+        我的盈利
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>统计</a></li>
+        <li class="active">我的盈利</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- LINE CHART -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">盈利曲线</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body admin-content">
+                    <!-- Date and time range -->
+                    <label class="col-sm-1 control-label">开始日期</label>
+                    <input id=StartDate class="col-sm-2" />
+                    <label class="col-sm-1 control-label">结束日期</label>
+                    <input id="EndDate" class="col-sm-2" />
+                    <label class="col-sm-1 control-label">用户名称</label>
+                    @Html.DropDownList("ClientUserId", Model.Users as List<SelectListItem>, "--所有客户--", new { @class = "col-sm-2 form-control" })
+                    <label class="col-sm-1 control-label"></label>
+                    <button class="btn btn-default" id="reloadBtn">查询</button>
+                </div>
+                <div class="box-body admin-content">
+                    <small>金额(元)</small>
+                    <div class="chart trading-order-daily">
+                        <canvas id="tradingOrderDailyLineChart" style="height:300px"></canvas>
+                    </div>
+                </div>
+                <div class="box-body admin-content dashboard-partial">
+                    @if (Model.ManagerViewTableSummary != null && Model.ManagerViewTableSummary.Count > 0)
+                    {
+                        @Html.Partial("_ManagerDashboardPartial", Model)
+                    }
+                    else
+                    {
+                        <div class="col-md-12">
+                            <!-- DONUT CHART -->
+                            <div class="box">
+                                <div class="box-header with-border">
+                                    <i class="fa fa-users"></i> <h3 class="box-title">没有相关数据</h3>
+                                    <div class="box-tools pull-right">
+                                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    请重新选择筛选时间
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="transferPopUp" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div id="transferContent" class="modal-content transferContent">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4>转账<span class="transferClientName" style="margin-left:10px;"></span><span class="transferTradingDate" style="margin-left:10px;"></span></h4>
+            </div>
+            <div class="modal-body">
+                <label class="redAsteriskBefore">转账金额</label>
+                <input type="text" class="transfer-amount" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary pull-right template-btn transfer-save-btn"> 保存</button>
+                <button type="button" class="btn btn-primary pull-right template-btn" data-dismiss="modal"> 撤销</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/dashboard/manager.js"></script>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#StartDate").datepicker("setDate",  new Date(new Date().setDate(new Date().getDate()-30)));
+            $("#EndDate").datepicker("setDate", new Date());
+            bindDashboardPageEvent();
+            initCommonDataTable('#DashboardDataTbl');
+            //initCommonDataTable('#DashboardAllDataTbl');
+            if(@Model.ManagerViewChartSummary.TradingDateList.Count > 0){
+                initDashboardLineChart(@(Html.Raw(Json.Encode(Model.ManagerViewChartSummary.TradingDateList))), @(Html.Raw(Json.Encode(Model.ManagerViewChartSummary.DailyProfitList))));
+            }
+            else{
+                $('#tradingOrderDailyLineChart').remove();
+                $('.trading-order-daily').append('<canvas id="tradingOrderDailyLineChart" style="height:300px"></canvas>');
+            }
+        });
+
+    </script>
+}

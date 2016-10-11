@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "StockManager";
+}
+
+@using SmartStock.Core.Models
+@using SmartStock.Core.Enums
+@model List<TradingStockInfo>
+
+@{
+    LoginUser loginUser = (LoginUser)Session["CurrentLoginUser"];
+}
+
+<table id="StockDataTbl" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>用户名称</th>
+            <th>股票代码</th>
+            <th>股票名称</th>
+            <th>股票数量</th>
+            <th>收盘价格</th>
+            <th>股东代码</th>
+            <th>资金账号</th>
+            @if (loginUser.RoleType == RoleType.Manager)
+            {
+                <th></th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stock in Model)
+        {
+            <tr data-tradingstockid="@stock.ID" data-userid="@stock.UserID" data-stockcode="@stock.StockCode" data-stockname="@stock.StockName" data-orignalnumber="@stock.OrignalNumber"
+                 data-closingprice="@stock.ClosingPrice" data-stockholdercode="@stock.StockHolderCode" data-cashaccountno="@stock.CashAccountNo">
+                <td>@stock.LoginName</td>
+                <td>@stock.StockCode</td>
+                <td>@stock.StockName</td>
+                <td>@stock.OrignalNumber</td>
+                <td>@stock.ClosingPrice</td>
+                <td>@stock.StockHolderCode</td>
+                <td>@stock.CashAccountNo</td>
+                @if (loginUser.RoleType == RoleType.Manager)
+                {
+                    <td>
+                        <a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="编辑" class="btn btn-xs btn-default editAction"><i class="fa fa-edit"></i> </a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+

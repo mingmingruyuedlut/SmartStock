@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "StockManager";
+}
+
+@using SmartStock.Core.Models
+@using SmartStock.Core.Enums
+@model List<TradingClientInfo>
+
+@{
+    LoginUser loginUser = (LoginUser)Session["CurrentLoginUser"];
+}
+
+<table id="StockDataTbl" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>用户名称</th>
+            <th>登陆账号</th>
+            <th>交易密码</th>
+            <th>初始资产</th>
+            <th>可用资金</th>
+            <th>股票市值</th>
+            <th>开始日期</th>
+            <th>结束日期</th>
+            <th>签约日期</th>
+            <th>收益分比</th>
+            @if (loginUser.RoleType == RoleType.Manager)
+            {
+                <th></th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stock in Model)
+        {
+            <tr data-tradingclientid="@stock.ID" data-userid="@stock.UserID" data-stockaccountlogin="@stock.StockAccountLogin" data-stockaccountpassword="@stock.StockAccountPassword" 
+                data-originalamount="@stock.OriginalAmount" data-avaliableamount="@stock.AvaliableAmount" data-stockamount="@stock.StockAmount" data-starttradingdate="@stock.StartTradingDate" 
+                data-endtradingdate="@stock.EndTradingDate" data-signdate="@stock.SignDate" data-profitpercent="@stock.ProfitPercent"> 
+                <td>@stock.LoginName</td>
+                <td>@stock.StockAccountLogin</td>
+                <td>@stock.StockAccountPassword</td>
+                <td>@stock.OriginalAmount</td>
+                <td>@stock.AvaliableAmount</td>
+                <td>@stock.StockAmount</td>
+                <td>@stock.StartTradingDate</td>
+                <td>@stock.EndTradingDate</td>
+                <td>@stock.SignDate</td>
+                <td>@Math.Round(Convert.ToDecimal(stock.ProfitPercent), 2, MidpointRounding.AwayFromZero)%</td>
+                @if (loginUser.RoleType == RoleType.Manager)
+                {
+                    <td>
+                        <a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="编辑" class="btn btn-xs btn-default editAction"><i class="fa fa-edit"></i> </a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+
