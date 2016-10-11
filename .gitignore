@@ -1,15 +1,15 @@
 
-/SmartStock/bin
-/SmartStock/obj
+/SmartStock/bin/*
+/SmartStock/obj/*
 
-/SmartStock.Common/bin
-/SmartStock.Common/obj
+/SmartStock.Common/bin/*
+/SmartStock.Common/obj/*
 
-/SmartStock.Core/bin
-/SmartStock.Core/obj
+/SmartStock.Core/bin/*
+/SmartStock.Core/obj/*
 
-/SmartStock.JobManager/bin
-/SmartStock.JobManager/obj
+/SmartStock.JobManager/bin/*
+/SmartStock.JobManager/obj/*
 
-/SmartStock.Tests/bin
-/SmartStock.Tests/obj
+/SmartStock.Tests/bin/*
+/SmartStock.Tests/obj/*
