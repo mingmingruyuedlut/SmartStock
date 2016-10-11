@@ -1,5 +1,0 @@
-﻿
-function bindRoleManagerEvent() {
-    //to do
-}
-
