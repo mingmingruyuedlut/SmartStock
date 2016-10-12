@@ -15,9 +15,15 @@ namespace SmartStock.Core.Enums
         public const int OtherFault = 4;
     }
 
-    public class BuySellType
+    public enum TradingOrderBuySellType
     {
-        public const int Buy = 0;
-        public const int Sell = 1;
+        Buy, //证券买入
+        Sell //证券卖出
+    }
+
+    public class TradingOrderBuySellTypeDes
+    {
+        public const string Buy = "证券买入";
+        public const string Sell = "证券卖出";
     }
 }

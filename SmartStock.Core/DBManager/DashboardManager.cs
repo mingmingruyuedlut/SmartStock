@@ -75,15 +75,15 @@ namespace SmartStock.Core.DBManager
                 .GroupBy(x => new
                 {
                     x.TradingDate,
-                    x.StockHolderCode,
-                    x.StockCode
+                    x.TradingStock.StockHolderCode,
+                    x.TradingStock.StockCode
                 })
                 .Select(g => new ClientTradingOrderTempInfo
                 {
                     TradingDate = g.Key.TradingDate,
                     StockCode = g.Key.StockCode,
                     StockHolderCode = g.Key.StockHolderCode,
-                    StockName = g.Max(x => x.StockName),
+                    StockName = g.Max(x => x.TradingStock.StockName),
                     OperateProfit = g.Sum(x => x.SettleAmount).Value
                 }).ToList();
 
@@ -149,17 +149,18 @@ namespace SmartStock.Core.DBManager
 
             //need group by client??????
             var tradingOrders = _context.TradingOrder
+                .Include(nameof(TradingOrder))
                 .Where(x => x.TradingDate.CompareTo(staTradingDate) >= 0 && x.TradingDate.CompareTo(endTradingDate) <= 0 && x.OrderType == TradingOrderType.Normal && x.StockOperatorUserID == userId)
                 .GroupBy(x => new
                 {
                     x.TradingDate,
-                    x.StockCode
+                    x.TradingStock.StockCode
                 })
                 .Select(g => new
                 {
                     TradingDate = g.Key.TradingDate,
                     StockCode = g.Key.StockCode,
-                    StockName = g.FirstOrDefault().StockName,
+                    StockName = g.FirstOrDefault().TradingStock.StockName,
                     SumSettledAmount = g.Sum(x => x.SettleAmount)
                 }).ToList();
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartStock.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,8 @@ namespace SmartStock.Core.Models
         public string TradingDate { get; set; }
         public string StockCode { get; set; }
         public string StockName { get; set; }
-        public string BuySellType { get; set; }
+        public TradingOrderBuySellType BuySellType { get; set; }
+        public string BuySellTypeDescription { get; set; }
         public string TradingCode { get; set; }
         public decimal TradingPrice { get; set; }
         public int TradingNumber { get; set; }

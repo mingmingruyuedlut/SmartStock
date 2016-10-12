@@ -49,14 +49,15 @@ namespace SmartStock.Core.DBManager
                     ID = x.ID,
                     TradingDate = x.TradingDate,
                     BuySellType = x.BuySellType,
-                    StockCode = x.StockCode,
-                    StockName = x.StockName,
+                    BuySellTypeDescription = x.BuySellType == TradingOrderBuySellType.Buy ? TradingOrderBuySellTypeDes.Buy : TradingOrderBuySellTypeDes.Sell,
+                    StockCode = x.TradingStock.StockCode,
+                    StockName = x.TradingStock.StockName,
                     TradingPrice = x.TradingPrice.Value,
                     TradingNumber = x.TradingNumber.Value,
                     TradingAmount = x.TradingAmount.Value,
                     SettleAmount = x.SettleAmount.Value,
                     TradingCode = x.TradingCode,
-                    StockHolderCode = x.StockHolderCode,
+                    StockHolderCode = x.TradingStock.StockHolderCode,
                     StockOperator = x.StockOperatorUser.LoginName,
                     OrderType = x.OrderType.Value,
                     ParentID = x.ParentID.HasValue ? x.ParentID.Value : 0
@@ -73,14 +74,15 @@ namespace SmartStock.Core.DBManager
                     ID = x.ID,
                     TradingDate = x.TradingDate,
                     BuySellType = x.BuySellType,
-                    StockCode = x.StockCode,
-                    StockName = x.StockName,
+                    BuySellTypeDescription = x.BuySellType == TradingOrderBuySellType.Buy ? TradingOrderBuySellTypeDes.Buy : TradingOrderBuySellTypeDes.Sell,
+                    StockCode = x.TradingStock.StockCode,
+                    StockName = x.TradingStock.StockName,
                     TradingPrice = x.TradingPrice.Value,
                     TradingNumber = x.TradingNumber.Value,
                     TradingAmount = x.TradingAmount.Value,
                     SettleAmount = x.SettleAmount.Value,
                     TradingCode = x.TradingCode,
-                    StockHolderCode = x.StockHolderCode,
+                    StockHolderCode = x.TradingStock.StockHolderCode,
                     StockOperator = x.StockOperatorUser.LoginName,
                     OrderType = x.OrderType.Value,
                     ParentID = x.ParentID.HasValue ? x.ParentID.Value : 0
@@ -145,14 +147,15 @@ namespace SmartStock.Core.DBManager
                     ID = x.ID,
                     TradingDate = x.TradingDate,
                     BuySellType = x.BuySellType,
-                    StockCode = x.StockCode,
-                    StockName = x.StockName,
+                    BuySellTypeDescription = x.BuySellType == TradingOrderBuySellType.Buy ? TradingOrderBuySellTypeDes.Buy : TradingOrderBuySellTypeDes.Sell,
+                    StockCode = x.TradingStock.StockCode,
+                    StockName = x.TradingStock.StockName,
                     TradingPrice = x.TradingPrice.Value,
                     TradingNumber = x.TradingNumber.Value,
                     TradingAmount = x.TradingAmount.Value,
                     SettleAmount = x.SettleAmount.Value,
                     TradingCode = x.TradingCode,
-                    StockHolderCode = x.StockHolderCode,
+                    StockHolderCode = x.TradingStock.StockHolderCode,
                     StockOperator = x.StockOperatorUser.LoginName,
                     OrderType = x.OrderType.Value,
                     ParentID = x.ParentID.HasValue ? x.ParentID.Value : 0
@@ -172,16 +175,12 @@ namespace SmartStock.Core.DBManager
                 TradingStockID = parentTradingOrder.TradingStockID,
                 StockOperatorUserID = parentTradingOrder.StockOperatorUserID,
                 TradingDate = splitDate,
-                StockCode = parentTradingOrder.StockCode,
-                StockName = parentTradingOrder.StockName,
                 BuySellType = parentTradingOrder.BuySellType,
                 TradingCode = parentTradingOrder.TradingCode,
                 TradingPrice = parentTradingOrder.TradingPrice,
                 TradingNumber = splitNumber,
                 TradingAmount = splitNumber * parentTradingOrder.TradingPrice,
                 SettleAmount = parentTradingOrder.SettleAmount > 0 ? splitNumber * parentTradingOrder.TradingPrice : -splitNumber * parentTradingOrder.TradingPrice,
-                StockHolderCode = parentTradingOrder.StockHolderCode,
-                CashAccountNo = parentTradingOrder.CashAccountNo,
                 OrderType = parentTradingOrder.OrderType,
                 ParentID = toId
             };
@@ -232,29 +231,38 @@ namespace SmartStock.Core.DBManager
                 string[] tradingField = Regex.Split(tradingLine, @"\s\s+");
                 if (IsDateStr(tradingField[0], DateStringFormats.yyyyMMdd))
                 {
-                    TradingOrder tOrder = new TradingOrder()
+                    string bsTypeDescription  = tradingField[1];
+                    TradingStock tStock = new TradingStock()
                     {
-                        TradingDate = tradingField[0],
-                        BuySellType = tradingField[1],
                         StockCode = tradingField[2],
                         StockName = tradingField[3],
-                        TradingPrice = decimal.Parse(tradingField[4]),
-                        TradingNumber = Int32.Parse(tradingField[5]),
-                        TradingAmount = decimal.Parse(tradingField[7]),
-                        SettleAmount = decimal.Parse(tradingField[8]),
-                        TradingCode = tradingField[16],
                         StockHolderCode = tradingField[17],
-                        CashAccountNo = tradingField[18],
-                        OrderType = TradingOrderType.Normal,
-                        StockOperatorUserID = operatorUserId
+                        CashAccountNo = tradingField[18]
                     };
 
-                    if (tStockList.Any(x => x.StockCode.Equals(tOrder.StockCode) && x.StockHolderCode.Equals(tOrder.StockHolderCode)) && IsValidTradingOrderBSType(tOrder) && !IsTradingOrderExist(tOrder))
+                    if (tStockList.Any(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)) && IsValidTradingOrderBSType(bsTypeDescription))
                     {
-                        tOrder.TradingStockID = tStockList.FirstOrDefault(x => x.StockCode.Equals(tOrder.StockCode) && x.StockHolderCode.Equals(tOrder.StockHolderCode)).ID;
-                        _context.TradingOrder.Add(tOrder);
-                        _context.SaveChanges();
-                        resultMsg = "success";
+                        TradingOrder tOrder = new TradingOrder()
+                        {
+                            TradingDate = tradingField[0],
+                            BuySellType = bsTypeDescription.Equals("证券买入") ? TradingOrderBuySellType.Buy : TradingOrderBuySellType.Sell,
+                            TradingPrice = decimal.Parse(tradingField[4]),
+                            TradingNumber = Int32.Parse(tradingField[5]),
+                            TradingAmount = decimal.Parse(tradingField[7]),
+                            SettleAmount = decimal.Parse(tradingField[8]),
+                            TradingCode = tradingField[16],
+                            OrderType = TradingOrderType.Normal,
+                            StockOperatorUserID = operatorUserId
+                        };
+
+                        tOrder.TradingStockID = tStockList.FirstOrDefault(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)).ID;
+
+                        if (!IsTradingOrderExist(tOrder))
+                        {
+                            _context.TradingOrder.Add(tOrder);
+                            _context.SaveChanges();
+                            resultMsg = "success";
+                        }
                     }
                 }
             }
@@ -263,16 +271,15 @@ namespace SmartStock.Core.DBManager
 
         private bool IsTradingOrderExist(TradingOrder tOrder)
         {
-            return _context.TradingOrder.Any(x => x.TradingDate.Equals(tOrder.TradingDate) &&
-                x.StockCode.Equals(tOrder.StockCode) &&
-                x.BuySellType.Equals(tOrder.BuySellType) &&
-                x.TradingCode.Equals(tOrder.TradingCode) &&
-                x.StockHolderCode.Equals(tOrder.StockHolderCode));
+            return _context.TradingOrder.Any(x => x.TradingStockID == tOrder.TradingStockID && 
+                x.TradingDate.Equals(tOrder.TradingDate) &&
+                x.BuySellType == tOrder.BuySellType &&
+                x.TradingCode.Equals(tOrder.TradingCode));
         }
 
-        private bool IsValidTradingOrderBSType(TradingOrder tOrder)
+        private bool IsValidTradingOrderBSType(string bsTypeDes)
         {
-            return (tOrder.BuySellType.Equals("证券买入") || tOrder.BuySellType.Equals("证券卖出"));
+            return (bsTypeDes.Equals("证券买入") || bsTypeDes.Equals("证券卖出"));
         }
 
         private bool IsDateStr(string dateStr, string dateFormat)

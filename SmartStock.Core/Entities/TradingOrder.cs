@@ -1,6 +1,7 @@
 ﻿
 namespace SmartStock.Core.Entities
 {
+    using Enums;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -25,14 +26,7 @@ namespace SmartStock.Core.Entities
         [StringLength(10)]
         public string TradingDate { get; set; }
 
-        [StringLength(10)]
-        public string StockCode { get; set; }
-
-        [StringLength(10)]
-        public string StockName { get; set; }
-
-        [StringLength(10)]
-        public string BuySellType { get; set; }
+        public TradingOrderBuySellType BuySellType { get; set; }
 
         [StringLength(50)]
         public string TradingCode { get; set; }
@@ -44,12 +38,6 @@ namespace SmartStock.Core.Entities
         public Nullable<decimal> TradingAmount { get; set; }
 
         public Nullable<decimal> SettleAmount { get; set; }
-
-        [StringLength(50)]
-        public string StockHolderCode { get; set; }
-
-        [StringLength(50)]
-        public string CashAccountNo { get; set; }
 
         public Nullable<int> OrderType { get; set; }
 
