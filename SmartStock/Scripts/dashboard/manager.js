@@ -126,7 +126,8 @@ function reloadDashboardLineChart(startDate, endDate, clientUserId) {
                 initDashboardLineChart(data.TradingDateList, data.DailyProfitList);
             }
             else {
-                //to-do
+                $('#tradingOrderDailyLineChart').remove();
+                $('.trading-order-daily').append('<canvas id="tradingOrderDailyLineChart" style="height:300px"></canvas>');
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
