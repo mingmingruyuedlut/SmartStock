@@ -220,38 +220,102 @@ namespace SmartStock.Core.DBManager
             return new TradingReader().GetTradingOrder(filePath, operatorName);
         }
 
-        public string UploadTradingOrder(StreamReader sr, int operatorUserId)
+        public string UploadTradingOrder(StreamReader sr, UploadResourceType urType, int operatorUserId)
         {
-            string resultMsg = "";
+            string resultMsg = string.Empty;
+            if (urType == UploadResourceType.TDX)
+            {
+                resultMsg = UploadTradingOrderTDX(sr, operatorUserId);
+            }
+            else if (urType == UploadResourceType.THS)
+            {
+                resultMsg = UploadTradingOrderTHS(sr, operatorUserId);
+            }
+            return resultMsg;
+        }
+
+        public string UploadTradingOrderTDX(StreamReader sr, int operatorUserId)
+        {
+            string resultMsg = string.Empty;
             List<TradingStock> tStockList = _context.TradingStock.ToList();
             List<User> userList = _context.User.ToList();
-            string tradingLine = ""; //读文件中的一行
+            string tradingLine = string.Empty; //读文件中的一行
             while ((tradingLine = sr.ReadLine()) != null)
             {
-                string[] tradingField = Regex.Split(tradingLine, @"\s\s+");
-                if (IsDateStr(tradingField[0], DateStringFormats.yyyyMMdd))
+                string[] tradingFields = Regex.Split(tradingLine, @"\s\s+");
+                if (IsDateStr(tradingFields[0], DateStringFormats.yyyyMMdd))
                 {
-                    string bsTypeDescription  = tradingField[1];
+                    string bsTypeDescription = tradingFields[1];
                     TradingStock tStock = new TradingStock()
                     {
-                        StockCode = tradingField[2],
-                        StockName = tradingField[3],
-                        StockHolderCode = tradingField[17],
-                        CashAccountNo = tradingField[18]
+                        StockCode = tradingFields[2],
+                        StockName = tradingFields[3],
+                        StockHolderCode = tradingFields[17],
+                        CashAccountNo = tradingFields[18]
                     };
 
                     if (tStockList.Any(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)) && IsValidTradingOrderBSType(bsTypeDescription))
                     {
                         TradingOrder tOrder = new TradingOrder()
                         {
-                            TradingDate = tradingField[0],
+                            TradingDate = tradingFields[0],
                             BuySellType = bsTypeDescription.Equals("证券买入") ? TradingOrderBuySellType.Buy : TradingOrderBuySellType.Sell,
-                            TradingPrice = decimal.Parse(tradingField[4]),
-                            TradingNumber = Int32.Parse(tradingField[5]),
-                            TradingAmount = decimal.Parse(tradingField[7]),
-                            SettleAmount = decimal.Parse(tradingField[8]),
-                            TradingCode = tradingField[16],
+                            TradingPrice = decimal.Parse(tradingFields[4]),
+                            TradingNumber = Int32.Parse(tradingFields[5]),
+                            TradingAmount = decimal.Parse(tradingFields[7]),
+                            SettleAmount = decimal.Parse(tradingFields[8]),
+                            TradingCode = tradingFields[16],
                             OrderType = TradingOrderType.Normal,
+                            ResourceType = UploadResourceType.TDX,
+                            StockOperatorUserID = operatorUserId
+                        };
+
+                        tOrder.TradingStockID = tStockList.FirstOrDefault(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)).ID;
+
+                        if (!IsTradingOrderExist(tOrder))
+                        {
+                            _context.TradingOrder.Add(tOrder);
+                            _context.SaveChanges();
+                            resultMsg = "success";
+                        }
+                    }
+                }
+            }
+            return resultMsg;
+        }
+
+        public string UploadTradingOrderTHS(StreamReader sr, int operatorUserId)
+        {
+            string resultMsg = string.Empty;
+            List<TradingStock> tStockList = _context.TradingStock.ToList();
+            List<User> userList = _context.User.ToList();
+            string tradingLine = string.Empty; //读文件中的一行
+            while ((tradingLine = sr.ReadLine()) != null)
+            {
+                string[] tradingFields = Regex.Split(tradingLine, @"\t");
+                if (IsDateStr(tradingFields[0], DateStringFormats.yyyyMMdd))
+                {
+                    string bsTypeDescription = tradingFields[4];
+                    TradingStock tStock = new TradingStock()
+                    {
+                        StockCode = tradingFields[2],
+                        StockName = tradingFields[3],
+                        StockHolderCode = tradingFields[16]
+                    };
+
+                    if (tStockList.Any(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)) && IsValidTradingOrderBSType(bsTypeDescription))
+                    {
+                        TradingOrder tOrder = new TradingOrder()
+                        {
+                            TradingDate = tradingFields[0],
+                            BuySellType = bsTypeDescription.Equals("证券买入") ? TradingOrderBuySellType.Buy : TradingOrderBuySellType.Sell,
+                            TradingPrice = decimal.Parse(tradingFields[6]),
+                            TradingNumber = Int32.Parse(tradingFields[5]),
+                            TradingAmount = decimal.Parse(tradingFields[7]),
+                            SettleAmount = decimal.Parse(tradingFields[9]),
+                            TradingCode = tradingFields[14],
+                            OrderType = TradingOrderType.Normal,
+                            ResourceType = UploadResourceType.THS,
                             StockOperatorUserID = operatorUserId
                         };
 

@@ -1,28 +1,22 @@
 ﻿function bindUploadTradingOrderEvent() {
-    $('#dataInputFile').change(function () {
-        // will log a FileList object, view gifs below
-        // console.log(this.files);
-        // to-do
-    });
-
     $(document).on('click', '.data-upload-action', function () {
-        uploadTradingOrderDataFile();
+        uploadTradingOrderDataFile(this);
     });
 
     $(document).on('click', '.file-remove-action', function () {
-        removeChooseFile();
+        removeChooseFile(this);
     });
 }
 
-function uploadTradingOrderDataFile() {
-    var filePath = $('#dataInputFile').val();
-    if (filePath == '') {
+function uploadTradingOrderDataFile(obj) {
+    var fileInputObj = $(obj).parent().find('.trading-order-upload');
+    if (fileInputObj.val() == '') {
         alert('请选择一个正确的数据文件');
     }
     else {
-        var fileObj = $('#dataInputFile')[0].files[0];
         var formData = new FormData();
-        formData.append('filename', fileObj)
+        formData.append('resourcetype', fileInputObj.data('resourcetype'));
+        formData.append('filename', fileInputObj[0].files[0]);
         $.ajax({
             url: "/Stock/UploadTradingOrderDataFile",
             data: formData,
@@ -33,7 +27,7 @@ function uploadTradingOrderDataFile() {
             success: function (data) {
                 if (data == 'success') {
                     alert('上传成功');
-                    removeChooseFile();
+                    removeChooseFile(obj);
                 }
                 else {
                     alert(data);
@@ -46,8 +40,8 @@ function uploadTradingOrderDataFile() {
     }
 }
 
-function removeChooseFile() {
-    $('#dataInputFile').val('');
+function removeChooseFile(obj) {
+    $(obj).parent().find('.trading-order-upload').val('');
 }
 
 

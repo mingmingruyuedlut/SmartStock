@@ -108,6 +108,7 @@
     <Compile Include="Enums\RoleType.cs" />
     <Compile Include="Enums\Sex.cs" />
     <Compile Include="Enums\TradingOrderType.cs" />
+    <Compile Include="Enums\UploadResourceType.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountInfo.cs" />
     <Compile Include="Models\ClientViewerInfo.cs" />

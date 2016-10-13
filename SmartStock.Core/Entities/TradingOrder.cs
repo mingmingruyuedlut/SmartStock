@@ -41,6 +41,8 @@ namespace SmartStock.Core.Entities
 
         public Nullable<int> OrderType { get; set; }
 
+        public UploadResourceType ResourceType { get; set; }
+
         public Nullable<int> ParentID { get; set; }
 
     }

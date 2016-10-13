@@ -128,9 +128,10 @@ namespace SmartStock.Controllers
 
             string uResult = "success";
             LoginUser loginUser = (LoginUser)Session["CurrentLoginUser"];
+            UploadResourceType urType = (UploadResourceType)Enum.Parse(typeof(UploadResourceType), Request.Form["resourcetype"]);
             using (StreamReader sr = new StreamReader(Request.Files[0].InputStream, Encoding.GetEncoding("gb2312")))
             {
-                uResult = new TradingOrderManager().UploadTradingOrder(sr, loginUser.UserId);
+                uResult = new TradingOrderManager().UploadTradingOrder(sr, urType, loginUser.UserId);
             }
             return Json(uResult, JsonRequestBehavior.AllowGet);
         }
