@@ -104,29 +104,40 @@
                     
                     @if (loginUser.RoleType == RoleType.Manager)
                     {
-                        if (currentPageUrl.Contains("TransferOrderDashboard"))
+                        if (currentPageUrl.Contains("EmployeePerformanceDashboard"))
+                        {
+                            <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
+                            <li><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
+                            <li><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
+                            <li class="active"><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
+                        }
+                        else if (currentPageUrl.Contains("TransferOrderDashboard"))
                         {
                             <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
                             <li class="active"><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
                             <li><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
+                            <li><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
                         }
                         else if (currentPageUrl.Contains("ManagerDashboardDetail"))
                         {
                             <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
                             <li><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
                             <li class="active"><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
+                            <li><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
                         }
                         else if (currentPageUrl.Contains("Dashboard"))
                         {
                             <li class="active"><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
                             <li><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
                             <li><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
+                            <li><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
                         }
                         else
                         {
                             <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
                             <li><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
                             <li><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
+                            <li><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
                         }
                     }
                     else if (loginUser.RoleType == RoleType.Client)

@@ -151,5 +151,10 @@ namespace SmartStock.Controllers
             TransferOrderSummary toSummary = new TransferOrderManager().GetTransferOrderSummaryByUser(loginUserId);
             return View("TransferOrderDashboard", toSummary);
         }
+
+        public ActionResult EmployeePerformanceDashboard()
+        {
+            return View();
+        }
     }
 }

@@ -1090,6 +1090,7 @@
     <Content Include="Views\Balance\MergeTradingOrder.cshtml" />
     <Content Include="Views\Balance\_SplitTradingOrderPartial.cshtml" />
     <Content Include="Views\Balance\_MergeTradingOrderPartial.cshtml" />
+    <Content Include="Views\Dashboard\EmployeePerformanceDashboard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
