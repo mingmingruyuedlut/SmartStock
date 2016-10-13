@@ -246,37 +246,40 @@ namespace SmartStock.Core.DBManager
                 if (IsDateStr(tradingFields[0], DateStringFormats.yyyyMMdd))
                 {
                     string bsTypeDescription = tradingFields[1];
-                    TradingStock tStock = new TradingStock()
+                    if (IsValidTradingOrderBSType(bsTypeDescription))
                     {
-                        StockCode = tradingFields[2],
-                        StockName = tradingFields[3],
-                        StockHolderCode = tradingFields[17],
-                        CashAccountNo = tradingFields[18]
-                    };
-
-                    if (tStockList.Any(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)) && IsValidTradingOrderBSType(bsTypeDescription))
-                    {
-                        TradingOrder tOrder = new TradingOrder()
+                        TradingStock tStock = new TradingStock()
                         {
-                            TradingDate = tradingFields[0],
-                            BuySellType = bsTypeDescription.Equals("证券买入") ? TradingOrderBuySellType.Buy : TradingOrderBuySellType.Sell,
-                            TradingPrice = decimal.Parse(tradingFields[4]),
-                            TradingNumber = Int32.Parse(tradingFields[5]),
-                            TradingAmount = decimal.Parse(tradingFields[7]),
-                            SettleAmount = decimal.Parse(tradingFields[8]),
-                            TradingCode = tradingFields[16],
-                            OrderType = TradingOrderType.Normal,
-                            ResourceType = UploadResourceType.TDX,
-                            StockOperatorUserID = operatorUserId
+                            StockCode = tradingFields[2],
+                            StockName = tradingFields[3],
+                            StockHolderCode = tradingFields[17],
+                            CashAccountNo = tradingFields[18]
                         };
 
-                        tOrder.TradingStockID = tStockList.FirstOrDefault(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)).ID;
-
-                        if (!IsTradingOrderExist(tOrder))
+                        if (tStockList.Any(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)))
                         {
-                            _context.TradingOrder.Add(tOrder);
-                            _context.SaveChanges();
-                            resultMsg = "success";
+                            TradingOrder tOrder = new TradingOrder()
+                            {
+                                TradingDate = tradingFields[0],
+                                BuySellType = bsTypeDescription.Equals("证券买入") ? TradingOrderBuySellType.Buy : TradingOrderBuySellType.Sell,
+                                TradingPrice = decimal.Parse(tradingFields[4]),
+                                TradingNumber = Int32.Parse(tradingFields[5]),
+                                TradingAmount = decimal.Parse(tradingFields[7]),
+                                SettleAmount = decimal.Parse(tradingFields[8]),
+                                TradingCode = tradingFields[16],
+                                OrderType = TradingOrderType.Normal,
+                                ResourceType = UploadResourceType.TDX,
+                                StockOperatorUserID = operatorUserId
+                            };
+
+                            tOrder.TradingStockID = tStockList.FirstOrDefault(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)).ID;
+
+                            if (!IsTradingOrderExist(tOrder))
+                            {
+                                _context.TradingOrder.Add(tOrder);
+                                _context.SaveChanges();
+                                resultMsg = "success";
+                            }
                         }
                     }
                 }
@@ -296,36 +299,39 @@ namespace SmartStock.Core.DBManager
                 if (IsDateStr(tradingFields[0], DateStringFormats.yyyyMMdd))
                 {
                     string bsTypeDescription = tradingFields[4];
-                    TradingStock tStock = new TradingStock()
+                    if (IsValidTradingOrderBSType(bsTypeDescription))
                     {
-                        StockCode = tradingFields[2],
-                        StockName = tradingFields[3],
-                        StockHolderCode = tradingFields[16]
-                    };
-
-                    if (tStockList.Any(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)) && IsValidTradingOrderBSType(bsTypeDescription))
-                    {
-                        TradingOrder tOrder = new TradingOrder()
+                        TradingStock tStock = new TradingStock()
                         {
-                            TradingDate = tradingFields[0],
-                            BuySellType = bsTypeDescription.Equals("证券买入") ? TradingOrderBuySellType.Buy : TradingOrderBuySellType.Sell,
-                            TradingPrice = decimal.Parse(tradingFields[6]),
-                            TradingNumber = Int32.Parse(tradingFields[5]),
-                            TradingAmount = decimal.Parse(tradingFields[7]),
-                            SettleAmount = decimal.Parse(tradingFields[9]),
-                            TradingCode = tradingFields[14],
-                            OrderType = TradingOrderType.Normal,
-                            ResourceType = UploadResourceType.THS,
-                            StockOperatorUserID = operatorUserId
+                            StockCode = tradingFields[2],
+                            StockName = tradingFields[3],
+                            StockHolderCode = tradingFields[16]
                         };
 
-                        tOrder.TradingStockID = tStockList.FirstOrDefault(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)).ID;
-
-                        if (!IsTradingOrderExist(tOrder))
+                        if (tStockList.Any(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)))
                         {
-                            _context.TradingOrder.Add(tOrder);
-                            _context.SaveChanges();
-                            resultMsg = "success";
+                            TradingOrder tOrder = new TradingOrder()
+                            {
+                                TradingDate = tradingFields[0],
+                                BuySellType = bsTypeDescription.Equals("证券买入") ? TradingOrderBuySellType.Buy : TradingOrderBuySellType.Sell,
+                                TradingPrice = decimal.Parse(tradingFields[6]),
+                                TradingNumber = Int32.Parse(tradingFields[5]),
+                                TradingAmount = decimal.Parse(tradingFields[7]),
+                                SettleAmount = decimal.Parse(tradingFields[9]),
+                                TradingCode = tradingFields[14],
+                                OrderType = TradingOrderType.Normal,
+                                ResourceType = UploadResourceType.THS,
+                                StockOperatorUserID = operatorUserId
+                            };
+
+                            tOrder.TradingStockID = tStockList.FirstOrDefault(x => x.StockCode.Equals(tStock.StockCode) && x.StockHolderCode.Equals(tStock.StockHolderCode)).ID;
+
+                            if (!IsTradingOrderExist(tOrder))
+                            {
+                                _context.TradingOrder.Add(tOrder);
+                                _context.SaveChanges();
+                                resultMsg = "success";
+                            }
                         }
                     }
                 }
