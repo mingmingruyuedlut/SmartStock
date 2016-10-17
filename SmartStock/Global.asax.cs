@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Serilog;
+using SmartStock.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +18,7 @@ namespace SmartStock
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Log.Logger = SerilogConfig.CreateLogger();
         }
 
         protected void Application_AcquireRequestState()

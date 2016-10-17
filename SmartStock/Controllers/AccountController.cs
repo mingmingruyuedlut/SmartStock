@@ -1,4 +1,6 @@
-﻿using SmartStock.Core.DBManager;
+﻿using Serilog;
+using Serilog.Events;
+using SmartStock.Core.DBManager;
 using SmartStock.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -26,16 +28,19 @@ namespace SmartStock.Controllers
 
             if (loginUser.ValidateResult.ValidateResultType == LoginUserValidateResultType.Success)
             {
+                Log.Write(LogEventLevel.Information, "Login success. And username is {0}", loginUser.UserName);
                 Session["CurrentLoginUser"] = loginUser;
                 return RedirectToAction("Index", "Dashboard");
             }
             else if (loginUser.ValidateResult.ValidateResultType == LoginUserValidateResultType.UserNotExist)
             {
+                Log.Write(LogEventLevel.Information, "Login failed because of user not exist. And username is {0}", loginUser.UserName);
                 ModelState.AddModelError("UserName", "用户不存在");
                 return View(model);
             }
             else if (loginUser.ValidateResult.ValidateResultType == LoginUserValidateResultType.PasswordInvalid)
             {
+                Log.Write(LogEventLevel.Information, "Login failed becuase of password is invalid. And username is {0}", loginUser.UserName);
                 ModelState.AddModelError("Password", "用户名与密码不匹配");
                 return View(model);
             }
@@ -77,6 +82,7 @@ namespace SmartStock.Controllers
             }
             else
             {
+                Log.Write(LogEventLevel.Information, "Reigster success. And the register username is {0}", registerUser.UserName);
                 return RedirectToAction("Login", "Account");
             }
         }
