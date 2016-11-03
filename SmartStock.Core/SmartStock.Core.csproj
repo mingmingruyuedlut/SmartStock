@@ -110,6 +110,7 @@
     <Compile Include="DBManager\TradingClientManager.cs" />
     <Compile Include="DBManager\TradingReader.cs" />
     <Compile Include="DBManager\TransferOrderManager.cs" />
+    <Compile Include="DBManager\UserMgmtManager.cs" />
     <Compile Include="DBManager\Utility.cs" />
     <Compile Include="Entities\ErrorLog.cs" />
     <Compile Include="Entities\Role.cs" />
@@ -130,11 +131,13 @@
     <Compile Include="Models\ClientViewerInfo.cs" />
     <Compile Include="Models\ManagerViewerInfo.cs" />
     <Compile Include="Models\OperatorViewerInfo.cs" />
+    <Compile Include="Models\ResponseResult.cs" />
     <Compile Include="Models\RoleInfo.cs" />
     <Compile Include="Models\TradingOrderInfo.cs" />
     <Compile Include="Models\TradingStockInfo.cs" />
     <Compile Include="Models\TradingClientInfo.cs" />
     <Compile Include="Models\TransferOrderInfo.cs" />
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
