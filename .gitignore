@@ -8,6 +8,9 @@
 /SmartStock.Core/bin/
 /SmartStock.Core/obj/
 
+/SmartStock.WebService/bin/
+/SmartStock.WebService/obj/
+
 /SmartStock.JobManager/bin/
 /SmartStock.JobManager/obj/
 
