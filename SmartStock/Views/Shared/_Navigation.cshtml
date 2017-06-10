@@ -81,16 +81,18 @@
             {
                 <li class="@managerTreeClass treeview">
                     <a href="/stock/UploadTradingOrder">
-                        <i class="fa fa-gear"></i><span>交易</span><i class="fa fa-angle-left pull-right"></i>
+                        <i class="fa fa-gear"></i><span>数据上传</span><i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         @if (currentPageUrl.Contains("UploadTradingOrder"))
                         {
-                            <li class="active"><a href="/stock/UploadTradingOrder"><i class="fa fa-circle-o"></i> 数据上传</a></li>
+                            <li class="active"><a href="/stock/UploadTradingOrder"><i class="fa fa-circle-o"></i> 交割单</a></li>
+                            <li><a href="/stock/UploadDailyDealOrder"><i class="fa fa-circle-o"></i> 当日成交</a></li>
                         }
                         else
                         {
-                            <li><a href="/stock/UploadTradingOrder"><i class="fa fa-circle-o"></i> 数据上传</a></li>
+                            <li><a href="/stock/UploadTradingOrder"><i class="fa fa-circle-o"></i> 交割单</a></li>
+                            <li class="active"><a href="/stock/UploadDailyDealOrder"><i class="fa fa-circle-o"></i> 当日成交</a></li>
                         }
                     </ul>
                 </li>

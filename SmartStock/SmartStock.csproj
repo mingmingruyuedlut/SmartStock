@@ -1010,6 +1010,7 @@
     <Content Include="Scripts\role\rolemanager.js" />
     <Content Include="Scripts\smartstock.js" />
     <Content Include="Scripts\stock\clientmanager.js" />
+    <Content Include="Scripts\stock\dailydealordermanager.js" />
     <Content Include="Scripts\stock\ordermanager.js" />
     <Content Include="Scripts\stock\stockmanager.js" />
     <Content Include="Web.config" />
@@ -1107,6 +1108,7 @@
     <Content Include="Views\Balance\_SplitTradingOrderPartial.cshtml" />
     <Content Include="Views\Balance\_MergeTradingOrderPartial.cshtml" />
     <Content Include="Views\Dashboard\EmployeePerformanceDashboard.cshtml" />
+    <Content Include="Views\Stock\UploadDailyDealOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

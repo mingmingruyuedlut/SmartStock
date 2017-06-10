@@ -135,5 +135,22 @@ namespace SmartStock.Controllers
             }
             return Json(uResult, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult UploadDailyDealOrder()
+        {
+            return View();
+        }
+
+        public JsonResult UploadDailyDealOrderDataFile()
+        {
+            string uResult = "success";
+            LoginUser loginUser = (LoginUser)Session["CurrentLoginUser"];
+            UploadResourceType urType = (UploadResourceType)Enum.Parse(typeof(UploadResourceType), Request.Form["resourcetype"]);
+            using (StreamReader sr = new StreamReader(Request.Files[0].InputStream, Encoding.GetEncoding("gb2312")))
+            {
+                uResult = new DailyDealOrderManager().UploadDailyDealOrder(sr, urType);
+            }
+            return Json(uResult, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -102,6 +102,7 @@
     <Compile Include="Context\SSContext.cs" />
     <Compile Include="DBManager\AccountManager.cs" />
     <Compile Include="DBManager\AccountSettingManager.cs" />
+    <Compile Include="DBManager\DailyDealOrderManager.cs" />
     <Compile Include="DBManager\DashboardManager.cs" />
     <Compile Include="DBManager\RoleManager.cs" />
     <Compile Include="DBManager\SqlHelper.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="DBManager\TransferOrderManager.cs" />
     <Compile Include="DBManager\UserMgmtManager.cs" />
     <Compile Include="DBManager\Utility.cs" />
+    <Compile Include="Entities\DailyDealOrder.cs" />
     <Compile Include="Entities\ErrorLog.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\TradingClient.cs" />

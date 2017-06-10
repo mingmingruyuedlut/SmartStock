@@ -38,7 +38,8 @@ namespace SmartStock.Core.Context
         public DbSet<TradingOrder> TradingOrder { get; set; }
         public DbSet<TradingClient> TradingClient { get; set; }
         public DbSet<TransferOrder> TransferOrder { get; set; }
-        
+        public DbSet<DailyDealOrder> DailyDealOrder { get; set; }
+
         //public DbSet<ErrorLog> ErrorLog { get; set; } // this db table doesn't have primary key. it's unnormal table design. so can't created by entity framework.
     }
 }
