@@ -10,6 +10,8 @@ namespace SmartStock.Core.Enums
     {
         public const int Client = 1;
         public const int Operator = 2;
-        public const int Manager = 3;
+        public const int Leader = 3;
+        public const int Supervisor = 4;
+        public const int Manager = 5;
     }
 }

@@ -30,7 +30,9 @@ namespace SmartStock.Core.Migrations
             context.Role.AddOrUpdate(
                 new Entities.Role { ID = 1, RoleCode = "client", Description = "This is client role." },
                 new Entities.Role { ID = 2, RoleCode = "operator", Description = "This is operator role." },
-                new Entities.Role { ID = 3, RoleCode = "manager", Description = "This is manager role." }
+                new Entities.Role { ID = 3, RoleCode = "Leader", Description = "This is leader role." },
+                new Entities.Role { ID = 4, RoleCode = "Supervisor", Description = "This is supervisor role." },
+                new Entities.Role { ID = 5, RoleCode = "manager", Description = "This is manager role." }
             );
         }
     }
