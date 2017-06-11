@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "StockManager";
+}
+
+@using SmartStock.Core.Models
+@using SmartStock.Core.Enums
+@model List<DailyDealOrderInfo>
+
+@{
+    LoginUser loginUser = (LoginUser)Session["CurrentLoginUser"];
+}
+
+<table id="DailyDealOrderDataTbl" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>股票代码</th>
+            <th>股票名称</th>
+            <th>操作</th>
+            <th>成交数量</th>
+            <th>成交均价</th>
+            <td>成交金额</td>
+            <td>成交编号</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr data-tradingcode="@order.TradingCode">
+                <td>@order.StockCode</td>
+                <td>@order.StockName</td>
+                <td>@order.BuySellTypeDescription</td>
+                <td>@order.TradingNumber</td>
+                <td>@order.TradingPrice</td>
+                <td>@order.TradingAmount</td>
+                <td>@order.TradingCode</td>
+                <td>
+                    <input type="checkbox" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -50,5 +50,6 @@ namespace SmartStock.Core.Entities
         public Nullable<decimal> TradingAmount { get; set; }
 
         public Nullable<int> OrderType { get; set; }
+        public UploadResourceType ResourceType { get; set; }
     }
 }

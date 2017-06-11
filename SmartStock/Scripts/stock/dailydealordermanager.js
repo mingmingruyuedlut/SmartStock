@@ -45,3 +45,6 @@ function removeChooseFile(obj) {
 }
 
 
+function bindPickupDailyDealOrderEvent() {
+    
+}

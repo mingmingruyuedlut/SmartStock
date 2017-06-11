@@ -131,6 +131,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountInfo.cs" />
     <Compile Include="Models\ClientViewerInfo.cs" />
+    <Compile Include="Models\DailyDealOrderInfo.cs" />
     <Compile Include="Models\ManagerViewerInfo.cs" />
     <Compile Include="Models\OperatorViewerInfo.cs" />
     <Compile Include="Models\ResponseResult.cs" />

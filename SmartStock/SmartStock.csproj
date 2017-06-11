@@ -1109,6 +1109,8 @@
     <Content Include="Views\Balance\_MergeTradingOrderPartial.cshtml" />
     <Content Include="Views\Dashboard\EmployeePerformanceDashboard.cshtml" />
     <Content Include="Views\Stock\UploadDailyDealOrder.cshtml" />
+    <Content Include="Views\Stock\PickupDailyDealOrder.cshtml" />
+    <Content Include="Views\Stock\_PickupDDOrderAllPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

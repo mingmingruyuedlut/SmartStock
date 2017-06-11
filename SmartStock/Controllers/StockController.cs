@@ -152,5 +152,14 @@ namespace SmartStock.Controllers
             }
             return Json(uResult, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult PickupDailyDealOrder()
+        {
+            LoginUser loginUser = (LoginUser)Session["CurrentLoginUser"];
+            string defaultStartDate = DateTime.Now.AddDays(-1).ToString(DateStringFormats.yyyyMMdd);
+            string defaultEndDate = DateTime.Now.ToString(DateStringFormats.yyyyMMdd);
+            DailyDealOrderSummary ddOrderSummary = new DailyDealOrderManager().GetDailyDealOrderSummary(defaultStartDate, defaultEndDate, loginUser.UserId);
+            return View(ddOrderSummary);
+        }
     }
 }

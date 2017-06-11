@@ -9,6 +9,7 @@ namespace SmartStock.Core.Enums
     public enum UploadResourceType
     {
         TDX, //通达信
-        THS  //同花顺
+        THS, //同花顺
+        HT   //海通
     }
 }

@@ -23,7 +23,9 @@ namespace SmartStock.Core.Enums
 
     public class TradingOrderBuySellTypeDes
     {
-        public const string Buy = "证券买入";
-        public const string Sell = "证券卖出";
+        public const string TradingBuy = "证券买入";
+        public const string TradingSell = "证券卖出";
+        public const string Buy = "买入";
+        public const string Sell = "卖出";
     }
 }
