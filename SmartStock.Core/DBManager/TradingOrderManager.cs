@@ -231,6 +231,10 @@ namespace SmartStock.Core.DBManager
             {
                 resultMsg = UploadTradingOrderTHS(sr, operatorUserId);
             }
+            else if (urType == UploadResourceType.HT)
+            {
+                resultMsg = UploadTradingOrderHT(sr);
+            }
             return resultMsg;
         }
 
@@ -336,6 +340,18 @@ namespace SmartStock.Core.DBManager
                     }
                 }
             }
+            return resultMsg;
+        }
+
+        public string UploadTradingOrderHT(StreamReader sr)
+        {
+            string resultMsg = string.Empty;
+            List<TradingStock> tStockList = _context.TradingStock.ToList();
+            List<User> userList = _context.User.ToList();
+            string tradingLine = string.Empty; //读文件中的一行
+
+
+
             return resultMsg;
         }
 

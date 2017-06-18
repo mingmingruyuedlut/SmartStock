@@ -40,6 +40,14 @@ namespace SmartStock.Core.DBManager
                     {
                         currentUser.RoleType = RoleType.Operator;
                     }
+                    if (roleIds.Contains(RoleType.Leader))
+                    {
+                        currentUser.RoleType = RoleType.Leader;
+                    }
+                    if (roleIds.Contains(RoleType.Supervisor))
+                    {
+                        currentUser.RoleType = RoleType.Supervisor;
+                    }
                     if (roleIds.Contains(RoleType.Manager))
                     {
                         currentUser.RoleType = RoleType.Manager;

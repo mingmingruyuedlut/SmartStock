@@ -7,7 +7,10 @@
 
     string currentPageUrl = Request.Url.AbsoluteUri;
     string accountSettingTreeClass = (currentPageUrl.Contains("PersonalInformation") || currentPageUrl.Contains("ChangePassword")) ? "active" : "";
-    string managerTreeClass = (currentPageUrl.Contains("TradingStock") || currentPageUrl.Contains("TradingClient") || currentPageUrl.Contains("UploadTradingOrder")) ? "active" : "";
+    string operatorTreeClass = (currentPageUrl.Contains("PickupDailyDealOrder") || currentPageUrl.Contains("MyPickupDailyDealOrder")) ? "active" : "";
+    string leaderTreeClass = (currentPageUrl.Contains("UploadTradingOrder") || currentPageUrl.Contains("UploadDailyDealOrder")) ? "active" : "";
+    string supervisorTreeClass = "";//to-do
+    string managerTreeClass = (currentPageUrl.Contains("TradingStock") || currentPageUrl.Contains("TradingClient")) ? "active" : "";
     string dashboardTreeClass = (currentPageUrl.Contains("Dashboard")) ? "active" : "";
     string reportTreeClass = (currentPageUrl.Contains("Report")) ? "active" : "";
     string balanceTreeClass = (currentPageUrl.Contains("Balance")) ? "active" : "";
@@ -51,7 +54,8 @@
                     }
                 </ul>
             </li>
-            @if (loginUser.RoleType != RoleType.Operator)
+
+            @if (loginUser.RoleType == RoleType.Client)
             {
                 <li class="@managerTreeClass treeview">
                     <a href="/stock/TradingStock">
@@ -76,79 +80,13 @@
                         }
                     </ul>
                 </li>
-            }
-            else
-            {
-                <li class="@managerTreeClass treeview">
-                    <a href="/stock/UploadTradingOrder">
-                        <i class="fa fa-gear"></i><span>数据上传</span><i class="fa fa-angle-left pull-right"></i>
+
+                <li class="@dashboardTreeClass treeview">
+                    <a href="/Dashboard/index">
+                        <i class="fa fa-line-chart"></i><span>统计</span><i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        @if (currentPageUrl.Contains("UploadTradingOrder"))
-                        {
-                            <li class="active"><a href="/stock/UploadTradingOrder"><i class="fa fa-circle-o"></i> 交割单</a></li>
-                            <li><a href="/stock/UploadDailyDealOrder"><i class="fa fa-circle-o"></i> 当日成交</a></li>
-                            <li><a href="/stock/PickupDailyDealOrder"><i class="fa fa-circle-o"></i> 成交挑选</a></li>
-                            <li><a href="/stock/MyPickupDailyDealOrder"><i class="fa fa-circle-o"></i> 我的成交</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="/stock/UploadTradingOrder"><i class="fa fa-circle-o"></i> 交割单</a></li>
-                            <li class="active"><a href="/stock/UploadDailyDealOrder"><i class="fa fa-circle-o"></i> 当日成交</a></li>
-                            <li><a href="/stock/PickupDailyDealOrder"><i class="fa fa-circle-o"></i> 成交挑选</a></li>
-                            <li><a href="/stock/MyPickupDailyDealOrder"><i class="fa fa-circle-o"></i> 我的成交</a></li>
-                        }
-                    </ul>
-                </li>
-            }
-
-            <li class="@dashboardTreeClass treeview">
-                <a href="/Dashboard/index">
-                    <i class="fa fa-line-chart"></i><span>统计</span><i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    
-                    @if (loginUser.RoleType == RoleType.Manager)
-                    {
-                        if (currentPageUrl.Contains("EmployeePerformanceDashboard"))
-                        {
-                            <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
-                            <li><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
-                            <li><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
-                            <li class="active"><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
-                        }
-                        else if (currentPageUrl.Contains("TransferOrderDashboard"))
-                        {
-                            <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
-                            <li class="active"><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
-                            <li><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
-                            <li><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
-                        }
-                        else if (currentPageUrl.Contains("ManagerDashboardDetail"))
-                        {
-                            <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
-                            <li><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
-                            <li class="active"><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
-                            <li><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
-                        }
-                        else if (currentPageUrl.Contains("Dashboard"))
-                        {
-                            <li class="active"><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
-                            <li><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
-                            <li><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
-                            <li><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
-                            <li><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
-                            <li><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
-                            <li><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
-                        }
-                    }
-                    else if (loginUser.RoleType == RoleType.Client)
-                    {
-                        if (currentPageUrl.Contains("TransferOrderDashboardForClient"))
+                        @if (currentPageUrl.Contains("TransferOrderDashboardForClient"))
                         {
                             <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
                             <li class="active"><a href="/Dashboard/TransferOrderDashboardForClient"><i class="fa fa-circle-o"></i> 转账记录</a></li>
@@ -163,10 +101,35 @@
                             <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
                             <li><a href="/Dashboard/TransferOrderDashboardForClient"><i class="fa fa-circle-o"></i> 转账记录</a></li>
                         }
-                    }
-                    else
-                    {
-                        if (currentPageUrl.Contains("Dashboard"))
+                    </ul>
+                </li>
+            }
+            else if (loginUser.RoleType == RoleType.Operator)
+            {
+                <li class="@operatorTreeClass treeview">
+                    <a href="/stock/PickupDailyDealOrder">
+                        <i class="fa fa-gear"></i><span>数据选择</span><i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        @if (currentPageUrl.Contains("MyPickupDailyDealOrder"))
+                        {
+                            <li><a href="/stock/PickupDailyDealOrder"><i class="fa fa-circle-o"></i> 成交挑选</a></li>
+                            <li class="active"><a href="/stock/MyPickupDailyDealOrder"><i class="fa fa-circle-o"></i> 我的成交</a></li>
+                        }
+                        else
+                        {
+                            <li class="active"><a href="/stock/PickupDailyDealOrder"><i class="fa fa-circle-o"></i> 成交挑选</a></li>
+                            <li><a href="/stock/MyPickupDailyDealOrder"><i class="fa fa-circle-o"></i> 我的成交</a></li>
+                        }
+                    </ul>
+                </li>
+
+                <li class="@dashboardTreeClass treeview">
+                    <a href="/Dashboard/index">
+                        <i class="fa fa-line-chart"></i><span>统计</span><i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        @if (currentPageUrl.Contains("Dashboard"))
                         {
                             <li class="active"><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
                         }
@@ -174,12 +137,50 @@
                         {
                             <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
                         }
-                    }
-                </ul>
-            </li>
+                    </ul>
+                </li>
 
-            @if (loginUser.RoleType == RoleType.Manager)
+            }
+            else if (loginUser.RoleType == RoleType.Leader)
             {
+                <li class="@leaderTreeClass treeview">
+                    <a href="/stock/UploadTradingOrder">
+                        <i class="fa fa-gear"></i><span>数据上传</span><i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        @if (currentPageUrl.Contains("UploadTradingOrder"))
+                        {
+                            <li class="active"><a href="/stock/UploadTradingOrder"><i class="fa fa-circle-o"></i> 交割单</a></li>
+                            <li><a href="/stock/UploadDailyDealOrder"><i class="fa fa-circle-o"></i> 当日成交</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/stock/UploadTradingOrder"><i class="fa fa-circle-o"></i> 交割单</a></li>
+                            <li class="active"><a href="/stock/UploadDailyDealOrder"><i class="fa fa-circle-o"></i> 当日成交</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+            else if (loginUser.RoleType == RoleType.Supervisor)
+            {
+                <li class="@leaderTreeClass treeview">
+                    <a href="/stock/UploadTradingOrder">
+                        <i class="fa fa-gear"></i><span>数据上传</span><i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        @if (currentPageUrl.Contains("UploadTradingOrder"))
+                        {
+                            <li class="active"><a href="/stock/UploadTradingOrder"><i class="fa fa-circle-o"></i> 交割单</a></li>
+                            <li><a href="/stock/UploadDailyDealOrder"><i class="fa fa-circle-o"></i> 当日成交</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/stock/UploadTradingOrder"><i class="fa fa-circle-o"></i> 交割单</a></li>
+                            <li class="active"><a href="/stock/UploadDailyDealOrder"><i class="fa fa-circle-o"></i> 当日成交</a></li>
+                        }
+                    </ul>
+                </li>
+
                 <li class="@balanceTreeClass treeview">
                     <a href="/Balance/SplitTradingOrder">
                         <i class="fa fa-adjust"></i><span>拆合</span><i class="fa fa-angle-left pull-right"></i>
@@ -217,6 +218,75 @@
                         {
                             <li><a href="/Report/Index"><i class="fa fa-circle-o"></i> 交易记录</a></li>
                             <li class="active"><a href="/Report/Index"><i class="fa fa-circle-o"></i> 员工操作</a></li>
+                        }
+                    </ul>
+                </li>
+
+                <li class="@dashboardTreeClass treeview">
+                    <a href="/Dashboard/index">
+                        <i class="fa fa-line-chart"></i><span>统计</span><i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        @if (currentPageUrl.Contains("EmployeePerformanceDashboard"))
+                        {
+                            <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
+                            <li><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
+                            <li><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
+                            <li class="active"><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
+                        }
+                        else if (currentPageUrl.Contains("TransferOrderDashboard"))
+                        {
+                            <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
+                            <li class="active"><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
+                            <li><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
+                            <li><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
+                        }
+                        else if (currentPageUrl.Contains("ManagerDashboardDetail"))
+                        {
+                            <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
+                            <li><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
+                            <li class="active"><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
+                            <li><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
+                        }
+                        else if (currentPageUrl.Contains("Dashboard"))
+                        {
+                            <li class="active"><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
+                            <li><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
+                            <li><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
+                            <li><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/Dashboard/index"><i class="fa fa-circle-o"></i> 我的盈利</a></li>
+                            <li><a href="/Dashboard/TransferOrderDashboard"><i class="fa fa-circle-o"></i> 转账记录</a></li>
+                            <li><a href="/Dashboard/ManagerDashboardDetail"><i class="fa fa-circle-o"></i> 交易明细</a></li>
+                            <li><a href="/Dashboard/EmployeePerformanceDashboard"><i class="fa fa-circle-o"></i> 员工业绩</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+            else if (loginUser.RoleType == RoleType.Manager)
+            {
+                <li class="@managerTreeClass treeview">
+                    <a href="/stock/TradingStock">
+                        <i class="fa fa-gear"></i><span>委托</span><i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        @if (currentPageUrl.Contains("TradingClient"))
+                        {
+                            <li class="active"><a href="/stock/TradingClient"><i class="fa fa-circle-o"></i> 委托账号</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/stock/TradingClient"><i class="fa fa-circle-o"></i> 委托账号</a></li>
+                        }
+                        @if (currentPageUrl.Contains("TradingStock"))
+                        {
+                            <li class="active"><a href="/stock/TradingStock"><i class="fa fa-circle-o"></i> 委托股票</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/stock/TradingStock"><i class="fa fa-circle-o"></i> 委托股票</a></li>
                         }
                     </ul>
                 </li>

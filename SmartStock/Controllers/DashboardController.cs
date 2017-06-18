@@ -17,17 +17,29 @@ namespace SmartStock.Controllers
         public ActionResult Index()
         {
             LoginUser loginUser = (LoginUser)Session["CurrentLoginUser"];
-            if (loginUser.RoleType == RoleType.Operator)
+            if (loginUser.RoleType == RoleType.Client)
+            {
+                return RedirectToAction("ClientDashboard");
+            }
+            else if (loginUser.RoleType == RoleType.Operator)
             {
                 return RedirectToAction("OperatorDashboard");
             }
+            else if (loginUser.RoleType == RoleType.Leader)
+            {
+                return RedirectToAction("ManagerDashboard"); //to-do
+            }
+            else if (loginUser.RoleType == RoleType.Supervisor)
+            {
+                return RedirectToAction("ManagerDashboard"); //to-do
+            }
             else if (loginUser.RoleType == RoleType.Manager)
             {
-                return RedirectToAction("ManagerDashboard");
+                return RedirectToAction("ManagerDashboard"); //to-do
             }
             else
             {
-                return RedirectToAction("ClientDashboard");
+                return View();
             }
         }
 
