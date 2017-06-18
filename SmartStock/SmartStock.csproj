@@ -1111,6 +1111,8 @@
     <Content Include="Views\Stock\UploadDailyDealOrder.cshtml" />
     <Content Include="Views\Stock\PickupDailyDealOrder.cshtml" />
     <Content Include="Views\Stock\_PickupDDOrderAllPartial.cshtml" />
+    <Content Include="Views\Stock\MyPickupDailyDealOrder.cshtml" />
+    <Content Include="Views\Stock\_MyPickupDDOrderPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -4,6 +4,7 @@ using SmartStock.Core.Enums;
 using SmartStock.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -220,6 +221,29 @@ namespace SmartStock.Core.DBManager
                     TradingAmount = x.TradingAmount.Value,
                     TradingCode = x.TradingCode
                 }).ToList();
+        }
+
+
+        public void SavePickupOrders(List<int> ids, int userId)
+        {
+            List<DailyDealOrder> orderList = _context.DailyDealOrder.Where(x => !x.StockOperatorUserID.HasValue && ids.Contains(x.ID)).ToList();
+            orderList.ForEach(x =>
+            {
+                x.StockOperatorUserID = userId;
+                _context.Entry(x).State = EntityState.Modified;
+            });
+            _context.SaveChanges();
+        }
+
+        public void UnPickupOrder(int id)
+        {
+            DailyDealOrder order = _context.DailyDealOrder.Find(id);
+            if(order != null)
+            {
+                order.StockOperatorUserID = null;
+                _context.Entry(order).State = EntityState.Modified;
+                _context.SaveChanges();
+            }
         }
     }
 }

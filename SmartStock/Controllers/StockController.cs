@@ -161,5 +161,46 @@ namespace SmartStock.Controllers
             DailyDealOrderSummary ddOrderSummary = new DailyDealOrderManager().GetDailyDealOrderSummary(defaultStartDate, defaultEndDate, loginUser.UserId);
             return View(ddOrderSummary);
         }
+
+        public PartialViewResult ReloadPickupDailyDealOrder()
+        {
+            string defaultStartDate = DateTime.Now.AddDays(-1).ToString(DateStringFormats.yyyyMMdd);
+            string defaultEndDate = DateTime.Now.ToString(DateStringFormats.yyyyMMdd);
+            List<DailyDealOrderInfo> ddOrderInfoList = new DailyDealOrderManager().GetDailyDealOrders(defaultStartDate, defaultEndDate);
+            return PartialView("_PickupDDOrderAllPartial", ddOrderInfoList);
+        }
+
+        public JsonResult SavePickupOrders(string orderIds)
+        {
+            List<int> orderIdList = JsonConvert.DeserializeObject<List<int>>(orderIds);
+            LoginUser loginUser = (LoginUser)Session["CurrentLoginUser"];
+            new DailyDealOrderManager().SavePickupOrders(orderIdList, loginUser.UserId);
+            return Json("success", JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult MyPickupDailyDealOrder()
+        {
+            LoginUser loginUser = (LoginUser)Session["CurrentLoginUser"];
+            string defaultStartDate = DateTime.Now.AddDays(-1).ToString(DateStringFormats.yyyyMMdd);
+            string defaultEndDate = DateTime.Now.ToString(DateStringFormats.yyyyMMdd);
+            DailyDealOrderSummary ddOrderSummary = new DailyDealOrderManager().GetDailyDealOrderSummary(defaultStartDate, defaultEndDate, loginUser.UserId);
+            return View(ddOrderSummary);
+        }
+
+        public PartialViewResult ReloadMyPickupDailyDealOrder()
+        {
+            LoginUser loginUser = (LoginUser)Session["CurrentLoginUser"];
+            string defaultStartDate = DateTime.Now.AddDays(-1).ToString(DateStringFormats.yyyyMMdd);
+            string defaultEndDate = DateTime.Now.ToString(DateStringFormats.yyyyMMdd);
+            List<DailyDealOrderInfo> ddOrderInfoList = new DailyDealOrderManager().GetDailyDealOrders(defaultStartDate, defaultEndDate, loginUser.UserId);
+            return PartialView("_MyPickupDDOrderPartial", ddOrderInfoList);
+        }
+
+        public JsonResult UnPickupOrder(string orderId)
+        {
+            int id = Int32.Parse(orderId);
+            new DailyDealOrderManager().UnPickupOrder(id);
+            return Json("success", JsonRequestBehavior.AllowGet);
+        }
     }
 }
